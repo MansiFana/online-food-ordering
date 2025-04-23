@@ -1,0 +1,54 @@
+﻿@page
+@model Online_Food_Ordering.Pages.DeliveryInfos.IndexModel
+
+@{
+    ViewData["Title"] = "Delivery Information";
+}
+
+<h1>Delivery Information</h1>
+
+<p>
+    <a style="font-size:1.3em;" asp-page="Create">Create New</a>
+</p>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DeliveryInfo[0].DeliveryAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeliveryInfo[0].EstimatedTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeliveryInfo[0].Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeliveryInfo[0].Order)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.DeliveryInfo) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeliveryAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EstimatedTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Order.OrderId)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.DeliveryInfoId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.DeliveryInfoId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.DeliveryInfoId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

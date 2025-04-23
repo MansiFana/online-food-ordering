@@ -1,0 +1,54 @@
+﻿@page
+@model Online_Food_Ordering.Pages.MenuItems.IndexModel
+
+@{
+    ViewData["Title"] = "Menu List";
+}
+
+<h1>Menu List</h1>
+
+<p>
+    <a style="font-size:1.3em;" asp-page="Create">Create New</a>
+</p>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MenuItem[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MenuItem[0].Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MenuItem[0].Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MenuItem[0].RestaurantInfo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.MenuItem) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RestaurantInfo.Name)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.MenuItemId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.MenuItemId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.MenuItemId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

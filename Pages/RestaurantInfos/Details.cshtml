@@ -1,0 +1,46 @@
+﻿@page
+@model Online_Food_Ordering.Pages.RestaurantInfos.DetailsModel
+
+@{
+
+    ViewData["Title"] = "Restaurant Details";
+}
+<div class="bg-opacity-50 bg-light p-3">
+
+<h1>Resturant Details</h1>
+
+<div>
+    
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.RestaurantInfo.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.RestaurantInfo.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.RestaurantInfo.Address)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.RestaurantInfo.Address)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.RestaurantInfo.PhoneNumber)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.RestaurantInfo.PhoneNumber)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.RestaurantInfo.CuisineType)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.RestaurantInfo.CuisineType)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.RestaurantInfo.RestaurantInfoId">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
+</div>

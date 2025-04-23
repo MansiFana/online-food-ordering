@@ -1,0 +1,64 @@
+﻿@page
+@model Online_Food_Ordering.Pages.Orders.CreateModel
+
+@{
+    ViewData["Title"] = "Create New Order";
+}
+<div class="bg-opacity-50 bg-light p-3">
+
+    <h1>Create New Order</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Order.CustomerProfileId" class="control-label"></label>
+                <select asp-for="Order.CustomerProfileId" class="form-control" asp-items="ViewBag.CustomerProfileId"></select>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Order.MenuItemId" class="control-label"></label>
+                <select asp-for="Order.MenuItemId" class="form-control" asp-items="ViewBag.MenuItemId"></select>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Order.Quantity" class="control-label"></label>
+                <input asp-for="Order.Quantity" class="form-control" />
+                <span asp-validation-for="Order.Quantity" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Order.OrderDate" class="control-label"></label>
+                <input asp-for="Order.OrderDate" class="form-control" />
+                <span asp-validation-for="Order.OrderDate" class="text-danger"></span>
+            </div>
+
+            <!-- Dropdown for Order Status -->
+            <div class="form-group">
+                <label asp-for="Order.Status" class="control-label"></label>
+                <select asp-for="Order.Status" class="form-control" asp-items="ViewBag.OrderStatus">
+                    <option value="">Select Order Status</option> <!-- Default option -->
+                </select>
+                <span asp-validation-for="Order.Status" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-outline-dark" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

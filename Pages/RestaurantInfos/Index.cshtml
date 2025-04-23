@@ -1,0 +1,54 @@
+﻿@page
+@model Online_Food_Ordering.Pages.RestaurantInfos.IndexModel
+
+@{
+    ViewData["Title"] = "Restaurant Profile";
+}
+
+<h1>Restaurant Profile</h1>
+
+<p>
+    <a style="font-size:1.3em;" asp-page="Create">Create New</a>
+</p>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RestaurantInfo[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RestaurantInfo[0].Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RestaurantInfo[0].PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RestaurantInfo[0].CuisineType)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.RestaurantInfo) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CuisineType)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.RestaurantInfoId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.RestaurantInfoId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.RestaurantInfoId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

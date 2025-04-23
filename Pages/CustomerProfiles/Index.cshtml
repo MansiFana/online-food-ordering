@@ -1,0 +1,48 @@
+﻿@page
+@model Online_Food_Ordering.Pages.CustomerProfiles.IndexModel
+
+@{
+    ViewData["Title"] = "Customer Profiles List";
+}
+
+<h1>Customer Profiles List</h1>
+
+<p>
+    <a style="font-size:1.3em;" asp-page="Create">Create New</a>
+</p>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerProfile[0].FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerProfile[0].Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerProfile[0].PhoneNumber)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.CustomerProfile) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.CustomerProfileId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.CustomerProfileId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.CustomerProfileId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
