@@ -29,12 +29,13 @@ namespace Online_Food_Ordering.Pages.Orders
                 return NotFound();
             }
 
-            var order = await _context.Order.FirstOrDefaultAsync(m => m.OrderId == id);
+            var order = await _context.Order
+                .Include(o => o.RestaurantInfo)  
+                .FirstOrDefaultAsync(m => m.OrderId == id);
 
             if (order is not null)
             {
                 Order = order;
-
                 return Page();
             }
 

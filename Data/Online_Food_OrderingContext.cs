@@ -14,10 +14,10 @@ namespace Online_Food_Ordering.Data
         {
         }
 
-        public DbSet<OnlineFoodOrdering.Models.CustomerProfile> CustomerProfile { get; set; } = default!;
+        public DbSet<OnlineFoodOrdering.Models.Order> Order { get; set; } = default!;
         public DbSet<OnlineFoodOrdering.Models.DeliveryInfo> DeliveryInfo { get; set; } = default!;
         public DbSet<OnlineFoodOrdering.Models.MenuItem> MenuItem { get; set; } = default!;
-        public DbSet<OnlineFoodOrdering.Models.Order> Order { get; set; } = default!;
+        public DbSet<OnlineFoodOrdering.Models.CustomerProfile> CustomerProfile { get; set; } = default!;
         public DbSet<OnlineFoodOrdering.Models.RestaurantInfo> RestaurantInfo { get; set; } = default!;
 
     }

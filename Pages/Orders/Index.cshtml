@@ -8,47 +8,48 @@
 <h1>Order List</h1>
 
 <p>
-    <a style ="font-size:1.3em;" asp-page="Create">Create New</a>
+    <a style="font-size:1.3em;" asp-page="Create">Create New</a>
 </p>
 <table class="table table-hover">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Order[0].Quantity)
+                @Html.DisplayNameFor(model => model.Order.FirstOrDefault().Quantity)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Order[0].OrderDate)
+                @Html.DisplayNameFor(model => model.Order.FirstOrDefault().OrderDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Order[0].CustomerProfile)
+                @Html.DisplayNameFor(model => model.Order.FirstOrDefault().CustomerProfile)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Order[0].MenuItem)
+                @Html.DisplayNameFor(model => model.Order.FirstOrDefault().RestaurantInfo)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Order) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Quantity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OrderDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CustomerProfile.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MenuItem.Name)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.OrderId">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.OrderId">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.OrderId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Order)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerProfile.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RestaurantInfo.Name)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.OrderId">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.OrderId">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.OrderId">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

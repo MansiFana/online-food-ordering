@@ -58,11 +58,11 @@ namespace OnlineFoodOrdering
                 // Seed Orders
                 var orders = new Order[]
                 {
-                    new Order { CustomerProfileId = customers[0].CustomerProfileId, MenuItemId = menuItems[0].MenuItemId, Quantity = 2, Status = OrderStatus.Pending},
-                    new Order { CustomerProfileId = customers[1].CustomerProfileId, MenuItemId = menuItems[1].MenuItemId, Quantity = 1, Status = OrderStatus.Pending },
-                    new Order { CustomerProfileId = customers[2].CustomerProfileId, MenuItemId = menuItems[2].MenuItemId, Quantity = 3, Status = OrderStatus.Pending },
-                    new Order { CustomerProfileId = customers[3].CustomerProfileId, MenuItemId = menuItems[3].MenuItemId, Quantity = 2, Status = OrderStatus.Pending },
-                    new Order { CustomerProfileId = customers[4].CustomerProfileId, MenuItemId = menuItems[4].MenuItemId, Quantity = 1, Status = OrderStatus.Pending }
+                    new Order { CustomerProfileId = customers[0].CustomerProfileId, RestaurantInfoId = menuItems[0].MenuItemId, Quantity = 2, Status = OrderStatus.Pending},
+                    new Order { CustomerProfileId = customers[1].CustomerProfileId, RestaurantInfoId = menuItems[1].MenuItemId, Quantity = 1, Status = OrderStatus.Pending },
+                    new Order { CustomerProfileId = customers[2].CustomerProfileId, RestaurantInfoId = menuItems[2].MenuItemId, Quantity = 3, Status = OrderStatus.Pending },
+                    new Order { CustomerProfileId = customers[3].CustomerProfileId, RestaurantInfoId = menuItems[3].MenuItemId, Quantity = 2, Status = OrderStatus.Pending },
+                    new Order { CustomerProfileId = customers[4].CustomerProfileId, RestaurantInfoId = menuItems[4].MenuItemId, Quantity = 1, Status = OrderStatus.Pending }
                 };
                 context.Order.AddRange(orders);
                 context.SaveChanges();

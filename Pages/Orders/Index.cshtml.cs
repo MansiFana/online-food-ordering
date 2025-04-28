@@ -27,7 +27,7 @@ namespace Online_Food_Ordering.Pages.Orders
             {
                 Order = await _context.Order
                     .Include(o => o.CustomerProfile)  
-                    .Include(o => o.MenuItem)        
+                    .Include(o => o.RestaurantInfo)        
                     .ToListAsync();
             }
             catch (Exception ex)

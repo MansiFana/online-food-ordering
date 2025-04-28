@@ -12,8 +12,8 @@ using Online_Food_Ordering.Data;
 namespace Online_Food_Ordering.Migrations
 {
     [DbContext(typeof(Online_Food_OrderingContext))]
-    [Migration("20250423014110_InitialCretae")]
-    partial class InitialCretae
+    [Migration("20250425061237_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -123,13 +123,13 @@ namespace Online_Food_Ordering.Migrations
                     b.Property<int>("CustomerProfileId")
                         .HasColumnType("int");
 
-                    b.Property<int>("MenuItemId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RestaurantInfoId")
                         .HasColumnType("int");
 
                     b.Property<int>("Status")
@@ -139,7 +139,7 @@ namespace Online_Food_Ordering.Migrations
 
                     b.HasIndex("CustomerProfileId");
 
-                    b.HasIndex("MenuItemId");
+                    b.HasIndex("RestaurantInfoId");
 
                     b.ToTable("Order");
                 });
@@ -207,15 +207,15 @@ namespace Online_Food_Ordering.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("OnlineFoodOrdering.Models.MenuItem", "MenuItem")
-                        .WithMany()
-                        .HasForeignKey("MenuItemId")
+                    b.HasOne("OnlineFoodOrdering.Models.RestaurantInfo", "RestaurantInfo")
+                        .WithMany("Orders")
+                        .HasForeignKey("RestaurantInfoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("CustomerProfile");
 
-                    b.Navigation("MenuItem");
+                    b.Navigation("RestaurantInfo");
                 });
 
             modelBuilder.Entity("OnlineFoodOrdering.Models.CustomerProfile", b =>
@@ -231,6 +231,8 @@ namespace Online_Food_Ordering.Migrations
             modelBuilder.Entity("OnlineFoodOrdering.Models.RestaurantInfo", b =>
                 {
                     b.Navigation("MenuItems");
+
+                    b.Navigation("Orders");
                 });
 #pragma warning restore 612, 618
         }

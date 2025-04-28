@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Online_Food_Ordering.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCretae : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -71,10 +71,10 @@ namespace Online_Food_Ordering.Migrations
                     OrderId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CustomerProfileId = table.Column<int>(type: "int", nullable: false),
-                    MenuItemId = table.Column<int>(type: "int", nullable: false),
                     Quantity = table.Column<int>(type: "int", nullable: false),
                     OrderDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Status = table.Column<int>(type: "int", nullable: false)
+                    Status = table.Column<int>(type: "int", nullable: false),
+                    RestaurantInfoId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -86,10 +86,10 @@ namespace Online_Food_Ordering.Migrations
                         principalColumn: "CustomerProfileId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Order_MenuItem_MenuItemId",
-                        column: x => x.MenuItemId,
-                        principalTable: "MenuItem",
-                        principalColumn: "MenuItemId",
+                        name: "FK_Order_RestaurantInfo_RestaurantInfoId",
+                        column: x => x.RestaurantInfoId,
+                        principalTable: "RestaurantInfo",
+                        principalColumn: "RestaurantInfoId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -132,9 +132,9 @@ namespace Online_Food_Ordering.Migrations
                 column: "CustomerProfileId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Order_MenuItemId",
+                name: "IX_Order_RestaurantInfoId",
                 table: "Order",
-                column: "MenuItemId");
+                column: "RestaurantInfoId");
         }
 
         /// <inheritdoc />
@@ -144,13 +144,13 @@ namespace Online_Food_Ordering.Migrations
                 name: "DeliveryInfo");
 
             migrationBuilder.DropTable(
+                name: "MenuItem");
+
+            migrationBuilder.DropTable(
                 name: "Order");
 
             migrationBuilder.DropTable(
                 name: "CustomerProfile");
-
-            migrationBuilder.DropTable(
-                name: "MenuItem");
 
             migrationBuilder.DropTable(
                 name: "RestaurantInfo");

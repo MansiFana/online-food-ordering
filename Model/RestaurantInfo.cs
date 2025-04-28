@@ -24,5 +24,7 @@ namespace OnlineFoodOrdering.Models
         public string CuisineType { get; set; } = string.Empty;
 
         public ICollection<MenuItem> MenuItems { get; set; } = new List<MenuItem>();
+        public ICollection<Order> Orders { get; set; } = new List<Order>();
+
     }
 }

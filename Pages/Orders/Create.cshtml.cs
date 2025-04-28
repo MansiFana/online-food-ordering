@@ -22,7 +22,7 @@ namespace Online_Food_Ordering.Pages.Orders
         public IActionResult OnGet()
         {
             ViewData["CustomerProfileId"] = new SelectList(_context.CustomerProfile, "CustomerProfileId", "Email");
-            ViewData["MenuItemId"] = new SelectList(_context.MenuItem, "MenuItemId", "Name");
+            ViewData["RestaurantInfoId"] = new SelectList(_context.RestaurantInfo, "RestaurantInfoId", "Name");
             // Pass the OrderStatus enum values to the view
             ViewData["OrderStatus"] = new SelectList(Enum.GetValues(typeof(OrderStatus)).Cast<OrderStatus>());
 

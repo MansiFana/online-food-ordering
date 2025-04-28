@@ -24,25 +24,23 @@ namespace Online_Food_Ordering.Pages.Orders
 
         public async Task<IActionResult> OnGetAsync(int id)
         {
-            // Fetch the order you want to edit
-            Order = await _context.Order.Include(o => o.CustomerProfile).Include(o => o.MenuItem).FirstOrDefaultAsync(m => m.OrderId == id);
+            Order = await _context.Order
+                .Include(o => o.CustomerProfile)
+                .Include(o => o.RestaurantInfo) // Corrected to include the RestaurantInfo entity
+                .FirstOrDefaultAsync(m => m.OrderId == id);
 
             if (Order == null)
             {
                 return NotFound();
             }
 
-            // Populate the dropdowns for CustomerProfile and MenuItem
             ViewData["CustomerProfileId"] = new SelectList(_context.CustomerProfile, "CustomerProfileId", "Email");
-            ViewData["MenuItemId"] = new SelectList(_context.MenuItem, "MenuItemId", "Name");
-
-            // Populate the order status dropdown with enum values
+            ViewData["RestaurantInfoId"] = new SelectList(_context.RestaurantInfo, "RestaurantInfoId", "Name"); 
             ViewData["OrderStatus"] = new SelectList(Enum.GetValues(typeof(OrderStatus)).Cast<OrderStatus>());
 
             return Page();
         }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
